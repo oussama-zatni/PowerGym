@@ -1,0 +1,528 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+ul {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 45px;
+  flex-wrap: nowrap;
+  margin-top: 20px;
+  font-size: 30px;
+  list-style: none;
+  position: sticky;
+  top: 0;
+}
+a {
+  text-decoration: none;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  z-index: 1000;
+}
+body {
+  color: white;
+  background-size: cover;
+  background-color: black;
+  padding-top: 54.4px;
+}
+nav li:first-child {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+#navMenu.show {
+  left: 0;
+}
+
+span {
+  font-weight: bold;
+  color: red;
+}
+#navigation:hover,
+h3:hover {
+  text-shadow: 0 0 10px red; /* comme allumer une lumière */
+  color: red;
+  transition: color 0.5s ease-in;
+}
+
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  padding: 0 20px;
+}
+h1 {
+  letter-spacing: 3px;
+  text-align: center;
+  font-size: 4.5em;
+  margin-bottom: 30px;
+  line-height: 1.2;
+  text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+  animation: fadeInUp 1s ease;
+  font-family: "Montserrat", sans-serif;
+}
+h1.typewriter {
+  overflow: hidden; /*le texte qui depasse la largeur sera masqué*/
+  border-right: 3px solid red; /*comme un curseur*/
+  white-space: nowrap; /*empêche le texte de passer à la ligne*/
+  margin: 0 auto;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite; /*ici steps-end clignote le cursor quand on termine une etape */
+  /* steps() divise l'animation en intervalles apparition lettre par lettre
+  steps(nombre_d'étapes, position)
+  nombre_d'étapes : Combien de sauts l'animation fera (ici 40 designant 40 lettres)
+  position : start ou end (moment où le changement se produit dans chaque intervalle)*/
+}
+/*typing fait passer la largeur du texte*/
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #ff0000;
+  text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+  animation: fadeInUp 1s ease;
+  text-align: center;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+/*le deplacement du curseur*/
+@keyframes blink-caret {
+  /* le curseur apparait et disparait régulièrement */
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: red;
+  }
+}
+.redletter span {
+  font-weight: bold;
+  color: red;
+}
+
+.sub-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+  color: #e0e0e0;
+  max-width: 600px;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  animation: fadeInUp 1.5s ease;
+}
+.btn {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-secondary,
+.btn-start {
+  text-decoration: none;
+  background-color: red;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.btn-start:hover,
+.whyusimg:hover {
+  background-color: transparent;
+  border-color: red;
+  transform: scale(1.05);
+  box-shadow: 0 8px 40px rgba(255, 0, 0, 0.8);
+}
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid #ff0000;
+}
+
+.btn-secondary:hover {
+  background: red;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px rgba(255, 0, 0, 0.8);
+}
+
+.background-clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  object-fit: cover;
+  filter: brightness(40%) blur(2px); /*ameliore qualite de l'image affecte par la Vit*/
+}
+.logo img {
+  width: 50px;
+  height: auto;
+}
+.welcome {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 1.2em;
+  font-family: montsserrat, sans-serif;
+  line-height: 1.6;
+  text-align: center;
+}
+.carousel {
+  margin: 50px 0;
+  width: 100%;
+  border-top: 3px solid red;
+  border-bottom: 3px solid red;
+  display: flex; /*flex pour aligner les classes conteair-carousel horizontalement */
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.9)
+  );
+  padding: 20px 0;
+}
+/* Masquer la scrollbar */
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+.conteair_carousel {
+  display: flex; /*flex pour aligner les cartes horizontalement dans la carousel*/
+  align-items: center;
+  justify-content: center;
+  animation: scroll 20s infinite linear;
+  gap: 30px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.card_carousel {
+  flex: 0 0 200px;
+  height: 200px;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(139, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+  border: 2px solid rgba(255, 0, 0, 0.3);
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2);
+}
+.card_carousel:hover {
+  transform: scale(1.05);
+  border-color: red;
+  box-shadow: 0 8px 40px rgba(255, 0, 0, 0.6);
+}
+.card_carousel i {
+  color: red;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+}
+.card_carousel h3 {
+  font-size: 1.2em;
+  color: white;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+/*l enroulement de la carousel*/
+
+.why_us {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 50px;
+  text-align: center;
+  gap: 50px;
+}
+.whyusimg {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+.whyUS {
+  border-radius: 30px;
+  border: 2px solid transparent;
+  box-shadow: 0 8px 40px rgba(255, 0, 0, 0.8);
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+.whyUS:hover {
+  transform: scale(1.05);
+  border-color: red;
+}
+
+.flip {
+  transform: rotateX(90deg);
+  opacity: 0;
+  transition: 1s ease;
+}
+.flip.show {
+  transform: rotateX(0);
+  opacity: 1;
+}
+.coach {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.coaching {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+.coaching:hover {
+  transform: scale(1.05);
+  transition: transform 2s;
+  box-shadow: 0 8px 40px rgba(255, 0, 0, 0.8);
+  border-color: red;
+}
+.coach-card {
+  border: 2px solid transparent;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 40px rgba(255, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.coach-card:hover {
+  transform: scale(1.05);
+  transition: transform 5s ease;
+  box-shadow: 0 8px 40px rgba(255, 0, 0, 0.8);
+}
+.translat {
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: 1s ease;
+}
+.translat.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+  /*adopte les elements de la page apres les changements des dimensions de l'ecran*/
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  nav ul {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.98);
+    width: 100%;
+    height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 100px;
+    transition: left 0.3s ease;
+    gap: 30px;
+    font-size: 24px;
+    margin-top: 0;
+  }
+
+  nav li:first-child {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    margin: 0;
+    z-index: 1000;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .sub-title {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .why_us {
+    grid-template-columns: 1fr;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .coach {
+    grid-template-columns: 1fr;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+/* ========== FOOTER SIMPLE ========== */
+.simple-footer {
+  background: #000;
+  color: white;
+  padding: 40px 20px;
+  margin-top: 60px;
+  text-align: center;
+  border-top: 2px solid red;
+}
+
+.simple-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.simple-footer-logo {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.simple-footer-logo i {
+  color: red;
+}
+
+.simple-footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.simple-footer-nav a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.simple-footer-nav a:hover {
+  color: red;
+}
+
+.simple-footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+
+.simple-footer-social a {
+  color: white;
+  transition: color 0.3s;
+}
+
+.simple-footer-social a:hover {
+  color: red;
+}
+
+.simple-footer-copyright {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.simple-footer-copyright .highlight {
+  color: red;
+  font-weight: bold;
+}

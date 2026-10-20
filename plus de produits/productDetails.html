@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Détails du Produit - NutriShop</title>
+    <link rel="stylesheet" href="store.css" />
+    <link rel="stylesheet" href="produitsDetails.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body>
+    <div class="product-details-container">
+      <button onclick="window.location.href='store.html'" class="back-button">
+        <i class="fas fa-arrow-left"></i> Retour à la boutique
+      </button>
+
+      <div id="productDetailsContent">
+        <!-- Template HTML statique -->
+        <div class="product-detail-grid">
+          <div class="product-image-section">
+            <div
+              id="productBadge"
+              class="product-badge"
+              style="display: none"></div>
+            <img id="productImage" src="" alt="" class="product-detail-image" />
+          </div>
+
+          <div class="product-info-section">
+            <h1 id="productTitle" class="product-detail-title"></h1>
+            <p id="productShortDesc" class="product-detail-desc"></p>
+            <div id="productPrice" class="product-detail-price"></div>
+
+            <button class="btn-add-to-cart">
+              <i class="fas fa-shopping-cart"></i> Ajouter au panier
+            </button>
+
+            <div class="product-features">
+              <h3><i class="fas fa-star"></i> Points forts</h3>
+              <ul id="productFeatures"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-full-description">
+          <h2><i class="fas fa-info-circle"></i> Description complète</h2>
+          <p id="productFullDesc"></p>
+        </div>
+
+        <div class="product-composition">
+          <h2><i class="fas fa-flask"></i> Composition</h2>
+          <p id="productComposition"></p>
+        </div>
+
+        <div class="product-usage">
+          <h2><i class="fas fa-utensils"></i> Mode d'emploi</h2>
+          <p id="productUsage"></p>
+        </div>
+      </div>
+    </div>
+    <script src="produitsDetails.js"></script>
+    <script>
+      // Récupérer l'ID du produit depuis l'URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("product");
+
+      displayProductDetails(productId);
+
+      // Fonction pour afficher les détails du produit
+      function displayProductDetails(productId) {
+        const product = productsData[productId];// pour acceder a l'objet 
+
+        // Remplir les informations de base
+        document.getElementById("productTitle").textContent = product.name;
+        document.getElementById("productShortDesc").textContent =
+          product.shortDesc;
+        document.getElementById("productPrice").textContent = product.price;
+        document.getElementById("productFullDesc").textContent =
+          product.fullDesc;
+        document.getElementById("productComposition").textContent =
+          product.composition;
+        document.getElementById("productUsage").textContent = product.usage;
+
+        // Image
+        const productImage = document.getElementById("productImage");
+        productImage.src = product.image;
+
+        // Badge (conditionnel)
+        if (product.badge) {
+          const badge = document.getElementById("productBadge");
+          badge.textContent = product.badge;
+          badge.className = `product-badge ${product.badgeClass}`;
+          badge.style.display = "block";
+        }
+
+        // Features (liste)
+        const featuresList = document.getElementById("productFeatures");
+        featuresList.innerHTML = product.features
+          .map((feature) => `<li><i class="fas fa-check"></i> ${feature}</li>`)
+          .join("");
+
+        // Gestion du survol pour afficher suppFactsImage
+        if (product.suppFactsImage) {
+          const imageSection = document.querySelector(".product-image-section");
+
+          // Create overlay image element
+          const overlayImg = document.createElement("img");
+          overlayImg.src = product.suppFactsImage;
+          overlayImg.className = "supp-facts-overlay";
+
+         
+
+          // Append to the container
+          imageSection.appendChild(overlayImg);
+        }
+      }
+    </script>
+  </body>
+</html>
